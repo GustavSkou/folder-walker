@@ -1,22 +1,41 @@
 import glob
+import random as r
+r.seed()
 
 
-def walk_folders(path):
+class FileFinder:
     lis_png = []
+    ran_lis_png = []
 
-    path = glob.glob(path + "/*")
+    @staticmethod
+    def walk_folders(path):
+        ff = FileFinder
 
-    for ele in path:
+        ff.lis_png.clear()
 
-        def walk(ele):
-            path = glob.glob(ele + "/*")
-            for ele in path:
-                if ele.endswith(".png"):
-                    lis_png.append(ele)
+        path = glob.glob(path + "/*")
 
-                walk(ele)
+        for ele in path:
 
-        walk(ele)
+            def walk(ele):
+                path = glob.glob(ele + "/*")
+                for ele in path:
+                    if ele.endswith(".png"):
+                        ff.lis_png.append(ele)
 
-    length = str(len(lis_png))
-    print("numbers of images: " + length)
+                    walk(ele)
+
+            walk(ele)
+
+        length = str(len(ff.lis_png))
+        print("numbers of images: " + length)
+
+    @staticmethod
+    def randomizer():
+        ff = FileFinder
+        ff.ran_lis_png.clear()
+        print("----------------------------------------random sample----------------------------------------")
+        for x in range(5):
+            ff.ran_lis_png = r.sample(ff.lis_png, 1)
+
+            print(ff.ran_lis_png)

@@ -1,7 +1,8 @@
-import folder_walk as fw
+from folder_walk import FileFinder
 
 path = str
 
 while path != "exit":
     path = input("path to search: ")
-    fw.walk_folders(path)
+    FileFinder.walk_folders(path)
+    FileFinder.randomizer()
